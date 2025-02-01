@@ -81,7 +81,7 @@ python eval_phish.py
 ## Main Results
 
 Here only the F1-Score(Percentage) results are displayed; for other metrics, please refer to the paper.
-Phisher detection task: 
+### Phisher detection task: 
 | *Model*              | *MultiGraph* | *B4E*     | *SPN*     |
 | -------------------- | ------------ | --------- | --------- |
 | *DeepWalk*          | 60.11        | 62.91     | 53.18     | 
@@ -101,7 +101,7 @@ Phisher detection task:
 | *ZipZap*           | 65.25        | 68.48     | 72.31     | 
 | ***KGBERT4Eth (Ours)*** | **87.60**    | **85.43** | **88.02** |
 
-Account identity de-anonymization task: 
+### Account identity de-anonymization task: 
 | *Model*              | *Overall* | *Airdrop Hunter* | *ICO Wallets* | *Mev Bot* | *Synthetix* |
 | -------------------- | --------- | ---------------- | ------------- | --------- | ----------- |
 | *DeepWalk*          | 66.62     | 78.86            | 14.20         | 51.76     | 68.81       |
