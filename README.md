@@ -33,9 +33,9 @@ We evaluated the performance of the model using two publicly available and newly
 ## Getting Started 
 #### Step1 Create environment and install required packages for KGBERT4ETH.
 #### Step2 Download the dataset.
-#### Step3 Preprocess the dataset to generate transaction text records and transaction knowledge graph.
+#### Step3 Preprocess the dataset for pretraining and eval.
 ```sh
-cd gen_MulDi_seq
+cd Data/gen_MultiGraoh_seq
 python dataset1.py
  ...
 python dataset11.py
@@ -45,38 +45,36 @@ python bedataset1.py
  ...
 python bedataset6.py
 
-cd gen_spn_seq
-python mydataset1.py
- ...
-python mydataset5.py
+cd Data/gen_dean_role
+python deanrole1.py
+python deanrole2.py
 ```
-#### Step4 Generate vocabulary list and vocabulary graph
+cd Data
+python gen_corpus_bm25.py
+#### Step4 Load the transaction knowledge graph and Pretrain the KGBERT4Eth
 ```sh
-python gen_train_MulDi.py
-
-python gen_train_b4e.py
-
-python train_on_spn.py
+python pretrain.py
 ```
-#### Step5 Train TLMG4Eth 
+#### Step5 Evaluation
 ```sh
-python train_on_MulDi.py
-
-python train_on_b4e.py
-
-python gen_train_spn.py
+python eval_dean_role.py
+python eval_phish.py
 ```
 
-| Parameter                | Description                                                                        |
-|--------------------------|------------------------------------------------------------------------------------|
-| `m`                | The trade-off parameters between transaction language model and GNNs model.                                             |
-| `model_name`         | Which GNNs model should be combined with the trading language model, options (`BertGCN`, `BertGAT`, `BertSAGE`).                                                  |
-| `use_baseline`         | if = `True`,the TLM will not contribute to updating the model and making predictions, only GNNs.                                    |
-| `epochs`                 | Number of training epochs.                                       |
-| `batch_size`             | Batch size, default = `64`.                                                       |
-| `vocab`          | The way of building vocab graph to enhance transaction semantics, options (`tf`, `pmi`, `all`)                    |
-| `threshold`        | Threshold for establishing a connection between two nodes in a vocab graph,  default = `0.2`.                        |
-| `device` | Device used for training models.        |
+| Parameter         | Description |
+|------------------|-------------|
+| `task`          | Specifies the task to execute, with options including `direct`, `finetune`, `linear`, and `aft_ft`, determining different training and evaluation strategies. |
+| `dev_tsv`       | Defines the path to the dataset file, which contains the input data for training, fine-tuning, or evaluation. |
+| `pretrained_path` | Specifies the path to the pretrained model directory, which stores checkpoint files used for initializing model weights before further training or evaluation. |
+| `model_path`    | Provides the path to the trained model file, used either for evaluation or as a starting point for continued training in fine-tuning experiments. |
+| `batch_size`    | Sets the number of samples processed in each training or evaluation batch, affecting memory usage and training efficiency. |
+| `max_length`    | Determines the maximum number of tokens allowed in the BERT input sequence, truncating longer inputs and padding shorter ones. |
+| `epochs`        | Defines the total number of training iterations over the dataset, influencing convergence and generalization performance. |
+| `learning_rate` | Specifies the step size for updating model parameters during optimization, impacting the speed and stability of training. |
+| `num_labels`    | Represents the number of output classes for classification tasks, determining the structure of the final prediction layer. |
+| `lossfuc_weight` | Controls the weighting of different classes in the loss function, which can be used to handle class imbalance during training. |
+
+
 
 
 
