@@ -29,7 +29,7 @@ for transaction in tqdm(trans_seq):
         idx_to_address[index] = to_address
         index += 1
     pair = tuple(sorted([address_to_idx[from_address], address_to_idx[to_address]]))
-    if pair in undirect_trans_freq:  # 交易双方组成的元组是否有在字典中，统计两地址间的交易次数
+    if pair in undirect_trans_freq:
         undirect_trans_freq[pair] += 1
     else:
         undirect_trans_freq[pair] = 1

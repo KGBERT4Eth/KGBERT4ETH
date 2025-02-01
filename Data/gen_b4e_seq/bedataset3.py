@@ -10,19 +10,19 @@ for address, transactions in trans_seq.items():
     # Update the transactions for the current address with the sorted list
     trans_seq[address] = sorted_transactions
 
-for address, transactions in tqdm.tqdm(trans_seq.items(), desc="处理n-gram数据"):
+for address, transactions in tqdm.tqdm(trans_seq.items(), desc="Processing n-gram data"):
     for i in range(len(transactions)):
         # Initialize a list to hold the n-gram time differences for this transaction
         n_gram_times = []
-        for n in range(2, 6):  # 处理2-gram到5-gram
+        for n in range(2, 6):  # Process 2-gram to 5-gram
             if i >= n - 1:
-                # 计算n-gram时间差并添加到n_gram_times列表
-                n_gram_time_diff = transactions[i][1]-transactions[i - n + 1][1]
+                # Calculate n-gram time difference and add to n_gram_times list
+                n_gram_time_diff = transactions[i][1] - transactions[i - n + 1][1]
                 n_gram_times.append(n_gram_time_diff)
             else:
-                # 对于序列中前n-1个交易，无法计算n-gram时间差，添加0
+                # For the first n-1 transactions in the sequence, cannot calculate n-gram time difference, add 0
                 n_gram_times.append(0)
-        # 将n-gram时间差直接添加到当前交易的末尾
+        # Add n-gram time differences directly to the end of the current transaction
         transactions[i].extend(n_gram_times)
 
 with open("bert4eth_trans3.pkl", "wb") as f:

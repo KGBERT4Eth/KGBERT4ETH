@@ -13,16 +13,16 @@ index = 0
 for address, transactions in tqdm(trans_seq.items()):
     modified_transactions = []
     for transaction in transactions:
-        # 从每个交易中移除索引为1和5的元素
+        # Remove elements at index 1 and 5 from each transaction
         modified_transaction = [transaction[i] for i in range(len(transaction)) if i not in [1, 5]]
         modified_transactions.append(modified_transaction)
-    trans_seq[address] = modified_transactions  # 更新地址的交易列表为修改后的交易列表
+    trans_seq[address] = modified_transactions  # Update the transaction list for the address
 
     for transaction in modified_transactions:
-        vice_address = transaction[0]  # 更新后的transaction[1]现在是transaction[0]
-        timestamp = transaction[1]  # 更新后的transaction[2]现在是transaction[1]
-        amount = transaction[2]  # 更新后的transaction[3]现在是transaction[2]
-        io_flag = transaction[3]  # 更新后的transaction[4]现在是transaction[3]
+        vice_address = transaction[0]  # Updated transaction[1] is now transaction[0]
+        timestamp = transaction[1]  # Updated transaction[2] is now transaction[1]
+        amount = transaction[2]  # Updated transaction[3] is now transaction[2]
+        io_flag = transaction[3]  # Updated transaction[4] is now transaction[3]
         if address not in address_to_idx:
             address_to_idx[address] = index
             idx_to_address[index] = address
