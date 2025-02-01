@@ -27,13 +27,13 @@ We evaluated the performance of the model using two publicly available and newly
 | *Dataset*        | *Nodes*      | *Edges*       | *Avg Degree*   |*Phisher* | *Source*  |
 | ---------------- | ------------- | -------------- | -------------- |------- |---------- |
 | MultiGraph       |  2,973,489    |  13,551,303    |  4.5574        | 1,165  |  XBlock     |
-| B4E              |  597,258      |  11,678,901    |  19.5542       | 3,220  |    Github,Chrome   |
+| B4E              |  597,258      |  11,678,901    |  19.5542       | 3,220  |  Google Drive   |
 | SPN  |  496,740      |  1831,082      |  1.6730        | 5,619  |    Github       |
 
 ## Getting Started 
-#### Step1 Create environment and install required packages for TLMG4Eth.
+#### Step1 Create environment and install required packages for KGBERT4ETH.
 #### Step2 Download the dataset.
-#### Step3 Preprocess the dataset to generate transaction text records and transaction network.
+#### Step3 Preprocess the dataset to generate transaction text records and transaction knowledge graph.
 ```sh
 cd gen_MulDi_seq
 python dataset1.py
