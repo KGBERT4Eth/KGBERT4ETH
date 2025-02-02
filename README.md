@@ -3,7 +3,7 @@ This is an implementation of the paper - "KGBERT4Eth: Knowledge-Grounded Transfo
 ## Overview
 The rapid growth of Ethereum and the high anonymity of its transactions have drawn numerous malicious attackers. While pre-trained Transformers have shown promising potential in fraud detection, existing methods are limited by learning trading semantics and the lack of structured domain knowledge. To address these issues, we propose KGBERT4Eth, a dual-focus pre-trained encoder that emphasizes both transaction semantics and knowledge. Unlike previous methods, KGBERT4Eth trains a transaction language model (TLM) to learn semantic representations from conceptualized transaction records and develops a transaction knowledge graph (TKG) to integrate domain knowledge. KGBERT4Eth jointly optimizes the pre-training objectives of both TLM and TKG, where TLM focuses on significant transaction blocks using biased mask prediction task, and TKG uses link prediction for pre-training. Additionally, KGBERT4Eth incorporates a mask-invariant attention synergy module to achieve information interaction between TLM and TKG during the pre-training period. KGBERT4Eth significantly outperforms previous methods on two downstream tasks, achieving absolute F1 score improvements of 8-16% on three phishing account detection datasets and 6-26% on four deanonymization datasets, compared to the best baselines. 
 ## Model Designs
-![image](https://github.com/KGBERT4Eth/KGBERT4ETH/blob/main/framwork.png)
+![image](framwork.png)
 
 
 ## Requirements
