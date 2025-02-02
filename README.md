@@ -48,9 +48,10 @@ python bedataset6.py
 cd Data/gen_dean_role
 python deanrole1.py
 python deanrole2.py
-```
+
 cd Data
 python gen_corpus_bm25.py
+```
 #### Step4 Load the transaction knowledge graph and Pretrain the KGBERT4Eth
 ```sh
 python pretrain.py
